@@ -1,3 +1,6 @@
+// import { saveAs } from './FileSaver.js';
+// import * as quillToWord from '../node_modules/quill-to-word';
+
 //flag for if user updated the preveiw or not
 let updated = false;
 
@@ -33,8 +36,32 @@ function onLoad() {
         data: { id: data.template._id, saveSwitchData: true },
         type: "GET",
         success: function (dat) {
-          console.log("page load success");
-          letterHTML = createLetterPreview(form, form.letter);
+          var auth;
+          var cookie = document.cookie.split(";");
+          const regex = " *auth=.+";
+          for (var i = 0; i < cookie.length; i++) {
+            if (
+              cookie[i].match(regex)
+            ) {
+              auth = cookie[i];
+            }
+          }
+          $.ajax({
+            url: "/users/profile/get",
+            headers: {
+              authorization: "Bearer " + auth.split("=")[1],
+            },
+            data: {},
+            type: "GET",
+            success: function (data2) {
+              let profile = data2;
+              console.log("page load success");
+              letterHTML = createLetterPreview(form, form.letter, profile);
+            },
+            error: function () {
+              console.log("error in loading user profile");
+            },
+          })
         },
       });
     },
@@ -180,7 +207,7 @@ function getDestinationRoute(address, params) {
 }
 
 // Creates the divs for each item in array
-function createLetterPreview(form, letter) {
+function createLetterPreview(form, letter, profile) {
   $(function () {
     var letterContainer = document.createElement("div");
     letterContainer.classList.add("border", "border-secondary", "letterEditor");
@@ -414,3 +441,13 @@ function displayTemplate() {
 //     saveEditModal();
 //   }, 500);
 // });
+
+
+async function saveQuill(){
+  let delta = quill.getContents();
+  let quillToWordConfig = {
+      exportAs: 'blob'
+  };
+  let docAsBlob = await window.quillToWord.generateWord(delta, quillToWordConfig);
+  window.quillToWord.saveAs(docAsBlob, 'word-export.docx');
+}

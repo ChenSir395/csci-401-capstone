@@ -44,6 +44,10 @@ const app = express();
 
 // Middleware for authentication & express
 app.use(logger("dev"));
+app.use('/scripts/file-saver', express.static(path.join(__dirname, "node_modules/file-saver/dist")));
+// app.use('/scripts/html-docx', express.static(path.join(__dirname, "node_modules/html-docs-js/dist")));
+// app.use('/scripts/blob', express.static(path.join(__dirname, "node_modules/blob")));
+app.use('/scripts/quill-to-word', express.static(path.join(__dirname, "node_modules/quill-to-word/dist")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.json());
