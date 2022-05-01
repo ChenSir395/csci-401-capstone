@@ -2,15 +2,20 @@
 Repo for hosting Letter of Recommendation Generator Capstone Project as of Fall 2021.
 
 Team members:
-+ Yuxi(Andy) Zhou – yuxizhou@usc.edu
-+ Frost(Tianjian) Xu – frostxu@usc.edu 
-+ Xiaochen(Bob) Yang – xiaocheny@usc.edu
-+ Andrew Han – dongilha@usc.edu
-+ Jared Kuo - jaredkuo@usc.edu
-+ Jiefan(Jeffery) Yang - jiefanya@usc.edu
++ Minyi Chen – minyiche@usc.edu
++ Kaituo Xu – kaituoxu@usc.edu
++ Justin Kuo – kuojusti@usc.edu
++ Shehzaad Iqbal - shehzaai@usc.edu
++ Kaiyi Huang - kaiyihua@usc.edu
 
-
-## How to Run Locally (Updated Fall 2021)
+## How to Run Locally (Updated Spring 2022)
++ Go to localdev2 branch
++ cd to letterOfRecGenerator
++ brew services start mongodb-community (to close, brew services stop mongodb-community)
++ brew services start redis (to close, brew services stop redis)
++ npm run dev (to stop, ctrl+c)
++ go to “https://localhost:443” in your preferred browser
+## How to Run Locally 2nd way (Updated Fall 2021)
 + Enter letterOfRecGenerator folder 
 + Run `DEBUG=letterOfRecGenerator:* npm run devstart` (for debug on console) or `npm run dev`
 + Open up a browser tab to `127.0.0.1:3000` (make sure port 3000 was not already occupied)
@@ -55,10 +60,17 @@ Currently, our app is hosted on a server with IP address 68.181.97.191 on port 3
 ## Deployment (as of Fall 2021)
 Currently, the app will be run under docker container.
 
+## Deployment (as of Spring 2022)
++ Log onto the server via Cisco as indicated in the project documentation and cd to where the github is located
++ stop the according docker image
++ git pull
++ build a new docker image with sudo docker-compose build --no-cache
+
+
 ____________________________________________________________________________________________________________________________
 
 
-## How to Install MongoDB
+## How to Install MongoDB (or try the brew install if you're MAC user)
 1. Go to [this link](https://www.mongodb.com/download-center?_ga=2.34334885.546969976.1519083876-785985683.1517259025#enterprise) and download the compressed files for your respective platform.
 2. Extract the files from the downloaded archive.
 
