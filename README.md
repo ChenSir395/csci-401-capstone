@@ -1,5 +1,6 @@
 # csci-401-capstone
 Repo for hosting Letter of Recommendation Generator Capstone Project as of Fall 2021.
+If you are a windows user, we strongly recommend you use a virtual machine to do this project.
 
 Team members:
 + Minyi Chen – minyiche@usc.edu
@@ -8,12 +9,12 @@ Team members:
 + Shehzaad Iqbal - shehzaai@usc.edu
 + Kaiyi Huang - kaiyihua@usc.edu
 
-## How to Run Locally (Updated Spring 2022)
+## How to Run Locally (Updated Spring 2022) for MAC/LINUX/VM users
 + Go to localdev2 branch
 + cd to letterOfRecGenerator
-+ brew services start mongodb-community (to close, brew services stop mongodb-community)
-+ brew services start redis (to close, brew services stop redis)
-+ npm run dev (to stop, ctrl+c)
++ `brew services start mongodb-community` (to close, `brew services stop mongodb-community`)
++ `brew services start redis` (to close, `brew services stop redis`)
++ `npm run dev` (to stop, ctrl+c)
 + go to “https://localhost:443” in your preferred browser
 ## How to Run Locally 2nd way (Updated Fall 2021)
 + Enter letterOfRecGenerator folder 
@@ -63,8 +64,8 @@ Currently, the app will be run under docker container.
 ## Deployment (as of Spring 2022)
 + Log onto the server via Cisco as indicated in the project documentation and cd to where the github is located
 + stop the according docker image
-+ git pull
-+ build a new docker image with sudo docker-compose build --no-cache
++ `git pull`
++ build a new docker image with `sudo docker-compose build --no-cache`
 
 
 ____________________________________________________________________________________________________________________________
